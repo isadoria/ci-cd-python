@@ -3,18 +3,14 @@ name: Pipeline CI-CD Python
 on:
   push:
     branches: [main]
-
   pull_request:
     branches: [main]
 
 jobs:
-
   ci:
     name: Continuous Integration
     runs-on: ubuntu-latest
-
     steps:
-
       - name: Baixar código
         uses: actions/checkout@v7
 
@@ -32,18 +28,12 @@ jobs:
       - name: Executar testes
         run: pytest -v
 
-
   delivery:
     name: Continuous Delivery
-
     needs: ci
-
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
     runs-on: ubuntu-latest
-
     steps:
-
       - name: Baixar código
         uses: actions/checkout@v7
 
